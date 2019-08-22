@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DailyOffer</string>
+    <string name="SERVER_URL">https://api.skypicker.com/</string>
+</resources>
