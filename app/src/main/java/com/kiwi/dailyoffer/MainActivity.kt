@@ -2,7 +2,10 @@ package com.kiwi.dailyoffer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.lifecycle.ViewModelProviders
 import com.google.gson.JsonObject
+import com.kiwi.dailyoffer.model.FlightSearchResponse
 import com.kiwi.dailyoffer.repository.FlightsDatasource
 import com.kiwi.dailyoffer.ui.main.MainFragment
 import org.koin.android.ext.android.inject
@@ -27,15 +30,18 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        flightsDatasource.flights("BTS","MAD","08/09/2019","18/09/2019").enqueue(object : Callback<JsonObject> {
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+        flightsDatasource.flights("BTS",null,"08/09/2019","18/09/2019").enqueue(object : Callback<FlightSearchResponse> {
+            override fun onFailure(call: Call<FlightSearchResponse>, t: Throwable) {
                 //Utils.insertLogActionIntoDB("sendAppVersion()","Failed","", t.localizedMessage,databaseHelper)
             }
 
-            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+            override fun onResponse(call: Call<FlightSearchResponse>, response: Response<FlightSearchResponse>) {
+                Log.d("Response",response.body().toString())
                 //Utils.insertLogActionIntoDB("sendAppVersion()","onResponse","", response.message() + response.body(),databaseHelper)
             }
         })
+
+
 
     }
 
