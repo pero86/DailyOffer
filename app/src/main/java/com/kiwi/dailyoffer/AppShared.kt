@@ -7,6 +7,10 @@ import com.kiwi.dailyoffer.di.remoteDatasourceModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.core.context.startKoin
+import com.crashlytics.android.Crashlytics
+import io.fabric.sdk.android.Fabric
+
+
 
 class AppShared : Application() {
     override fun onCreate() {
@@ -19,5 +23,7 @@ class AppShared : Application() {
             //modules(listOf(remoteDatasourceModule, appModule))
             //modules(locationModule)
         }
+
+        Fabric.with(this, Crashlytics())
     }
 }
