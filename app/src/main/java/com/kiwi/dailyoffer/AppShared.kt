@@ -15,6 +15,9 @@ import io.fabric.sdk.android.Fabric
 class AppShared : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        Fabric.with(this, Crashlytics())
+
         startKoin {
             AndroidLogger()
             androidContext(this@AppShared)
@@ -23,7 +26,5 @@ class AppShared : Application() {
             //modules(listOf(remoteDatasourceModule, appModule))
             //modules(locationModule)
         }
-
-        Fabric.with(this, Crashlytics())
     }
 }

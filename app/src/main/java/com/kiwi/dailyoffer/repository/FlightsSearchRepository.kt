@@ -1,20 +1,9 @@
 package com.kiwi.dailyoffer.repository
 
-import android.text.format.DateFormat
-import android.text.format.DateUtils
 import android.util.Log
-import com.kiwi.dailyoffer.model.FlightSearchResponse
 import com.kiwi.dailyoffer.utils.Utils
 import io.reactivex.Completable
 import khronos.toString
-import org.koin.android.ext.android.inject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.http.Query
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 interface FlightsSearchRepository {
