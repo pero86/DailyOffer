@@ -18,7 +18,7 @@ class MainViewModel(private val flightSearchRepository: FlightsSearchRepository)
         launch {
             searchEvent.value = SearchEvent(isLoading = true)
 
-            val today = Dates.today
+            val today = Dates.tomorrow
             val weekFromNow = today.plus(1.week)
 
             flightSearchRepository.searchFlights("BTS", null,today,weekFromNow,null,null)

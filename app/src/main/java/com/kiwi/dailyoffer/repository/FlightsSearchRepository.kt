@@ -18,7 +18,7 @@ class FlightsSearchRepositoryImpl(private val flightsDatasource: FlightsDatasour
         dateTo: Date,
         sortBy: String?,
         limit: Int?
-    ) : Completable = flightsDatasource.flights(flyFrom,flyTo, dateFrom.toString(dateFormat),dateTo.toString(dateFormat))
+    ) : Completable = flightsDatasource.flights(flyFrom,flyTo, dateFrom.toString(dateFormat),dateTo.toString(dateFormat), oneForCity = 1)
         .doOnSuccess { Log.d("*******", "today: " + dateFrom + " formatted " + dateFrom.toString(dateFormat)
                 + " dateT " + dateTo + " formatted: " + Utils.toKiwiDateFormat(dateTo)) }
         //.doOnError { Log.d("pro",dateFrom.toString(dateFormat)) }
