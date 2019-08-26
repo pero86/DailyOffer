@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        flightsDatasource.flights("BTS",null,"08/09/2019","18/09/2019").enqueue(object : Callback<FlightSearchResponse> {
+/*        flightsDatasource.flightsOldWay("BTS",null,"08/09/2019","18/09/2019").enqueue(object : Callback<FlightSearchResponse> {
             override fun onFailure(call: Call<FlightSearchResponse>, t: Throwable) {
                 //Utils.insertLogActionIntoDB("sendAppVersion()","Failed","", t.localizedMessage,databaseHelper)
             }
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Response",response.body().toString())
                 //Utils.insertLogActionIntoDB("sendAppVersion()","onResponse","", response.message() + response.body(),databaseHelper)
             }
-        })
+        })*/
 
 
 

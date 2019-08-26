@@ -2,10 +2,12 @@ package com.kiwi.dailyoffer.di
 
 import com.kiwi.dailyoffer.R
 import com.kiwi.dailyoffer.repository.FlightsDatasource
+import com.kiwi.dailyoffer.repository.FlightsSearchRepositoryImpl
 import com.kiwi.dailyoffer.repository.WeatherDatasource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -17,6 +19,7 @@ val remoteDatasourceModule = module {
 
     single<OkHttpClient> { createOkHttpClient() }
     single<FlightsDatasource> { createWebService(get(), androidApplication().getString(R.string.SERVER_URL)) }
+
 
 /*    // single instance of HelloRepository
     single<HelloRepository> { HelloRepositoryImpl() }

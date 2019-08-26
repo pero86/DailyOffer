@@ -1,6 +1,8 @@
 package com.kiwi.dailyoffer
 
 import android.app.Application
+import com.kiwi.dailyoffer.di.appModule
+import com.kiwi.dailyoffer.di.locationModule
 import com.kiwi.dailyoffer.di.remoteDatasourceModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
@@ -12,7 +14,10 @@ class AppShared : Application() {
         startKoin {
             AndroidLogger()
             androidContext(this@AppShared)
-            modules(remoteDatasourceModule)
+            modules(appModule+remoteDatasourceModule)
+
+            //modules(listOf(remoteDatasourceModule, appModule))
+            //modules(locationModule)
         }
     }
 }
