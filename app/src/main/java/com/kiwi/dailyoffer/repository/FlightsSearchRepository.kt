@@ -10,6 +10,8 @@ interface FlightsSearchRepository {
     fun searchFlights(flyFrom : String, flyTo : String? = null, dateFrom: Date, dateTo: Date, sortBy: String? = null, limit: Int? = null) : Completable
 }
 
+/* Possible local data repository implementation */
+
 class FlightsSearchRepositoryImpl(private val flightsDatasource: FlightsDatasource, private val dateFormat: String = "dd/MM/YYYY"): FlightsSearchRepository {
     override fun searchFlights(
         flyFrom: String,
@@ -21,8 +23,6 @@ class FlightsSearchRepositoryImpl(private val flightsDatasource: FlightsDatasour
     ) : Completable = flightsDatasource.flights(flyFrom,flyTo, dateFrom.toString(dateFormat),dateTo.toString(dateFormat), oneForCity = 1)
         .doOnSuccess { Log.d("*******", "today: " + dateFrom + " formatted " + dateFrom.toString(dateFormat)
                 + " dateT " + dateTo + " formatted: " + Utils.toKiwiDateFormat(dateTo)) }
-        //.doOnError { Log.d("pro",dateFrom.toString(dateFormat)) }
-        //.doOnSuccess {  }
         .ignoreElement()
 
 /*    {
@@ -36,7 +36,5 @@ class FlightsSearchRepositoryImpl(private val flightsDatasource: FlightsDatasour
                 Log.d("Response",response.body().toString())
             }
         })
-
-
     }*/
 }

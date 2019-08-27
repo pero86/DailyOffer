@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.kiwi.dailyoffer.R
 import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.main_fragment.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -51,6 +52,8 @@ class MainFragment : Fragment() {
         main.setOnRefreshListener {
             viewModel.searchFlights()
         }
+
+        main.spring_dots_indicator.setViewPager(viewPager)
     }
 
     override fun onResume() {

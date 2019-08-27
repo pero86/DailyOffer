@@ -75,6 +75,9 @@ dependencies {
         transitive = true
     }
 
+    //viewpager indicator
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:3.0.3'
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
