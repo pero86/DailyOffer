@@ -15,6 +15,8 @@ val appModule = module {
         R.string.date_format)) }
 
     viewModel { MainViewModel(get()) }
-    viewModel { (position : Int) -> OfferViewModel(position) }
+    viewModel { OfferViewModel(get()) }
+    //viewModel { (position : Int) -> OfferViewModel(position,get()) }
+    //viewModel { (someParameter: String) -> MainViewModel(someParameter) }
 
 }

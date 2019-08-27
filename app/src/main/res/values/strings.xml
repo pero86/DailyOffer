@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">DailyOffer</string>
     <string name="SERVER_URL">https://api.skypicker.com/</string>
+    <string name="IMAGE_SERVER_URL">https://images.kiwi.com/photos/600x330/</string>
     <string name="date_format">dd/MM/YYYY</string>
     <string name="date_format2">%d/%m/%Y</string>
 </resources>

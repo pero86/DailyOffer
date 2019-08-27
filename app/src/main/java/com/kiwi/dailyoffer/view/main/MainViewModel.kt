@@ -1,5 +1,7 @@
 package com.kiwi.dailyoffer.view.main
 
+import androidx.lifecycle.MutableLiveData
+import com.kiwi.dailyoffer.model.FlightSearchResponse
 import com.kiwi.dailyoffer.repository.FlightsSearchRepository
 import com.kiwi.dailyoffer.utils.AbstractViewModel
 import com.kiwi.dailyoffer.utils.SingleLiveEvent
@@ -12,6 +14,7 @@ import khronos.week
 class MainViewModel(private val flightSearchRepository: FlightsSearchRepository) : AbstractViewModel() {
 
     val searchEvent = SingleLiveEvent<SearchEvent>()
+    val result = MutableLiveData<ResultModel>()
 
     fun searchFlights() {
 
@@ -31,6 +34,7 @@ class MainViewModel(private val flightSearchRepository: FlightsSearchRepository)
                             isLoading = false
                         )
                     )
+                    result.value = ResultModel()
                 }, {
                         err -> searchEvent.postValue(
                     SearchEvent(
@@ -46,5 +50,5 @@ class MainViewModel(private val flightSearchRepository: FlightsSearchRepository)
 
 }
 
-//data class ResultUIModel(val list: List<DailyForecastModel> = emptyList(), val error: Throwable? = null)
+data class ResultModel(val results : FlightSearchResponse? = null, val error: Throwable? = null)
 data class SearchEvent(val isLoading: Boolean = false, val isSuccess: Boolean = false, val error: Throwable? = null)

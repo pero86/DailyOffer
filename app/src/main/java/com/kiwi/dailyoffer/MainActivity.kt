@@ -2,6 +2,7 @@ package com.kiwi.dailyoffer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.kiwi.dailyoffer.repository.FlightsDatasource
 import com.kiwi.dailyoffer.view.main.MainFragment
 import org.koin.android.ext.android.inject
@@ -18,6 +19,9 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
         }
+
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        supportActionBar?.hide()
     }
 
     override fun onResume() {
