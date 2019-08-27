@@ -2,16 +2,9 @@ package com.kiwi.dailyoffer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.ViewModelProviders
-import com.google.gson.JsonObject
-import com.kiwi.dailyoffer.model.FlightSearchResponse
 import com.kiwi.dailyoffer.repository.FlightsDatasource
-import com.kiwi.dailyoffer.ui.main.MainFragment
+import com.kiwi.dailyoffer.view.main.MainFragment
 import org.koin.android.ext.android.inject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     val flightsDatasource : FlightsDatasource by inject()

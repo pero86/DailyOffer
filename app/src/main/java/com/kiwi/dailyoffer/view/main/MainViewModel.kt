@@ -1,4 +1,4 @@
-package com.kiwi.dailyoffer.ui.main
+package com.kiwi.dailyoffer.view.main
 
 import com.kiwi.dailyoffer.repository.FlightsSearchRepository
 import com.kiwi.dailyoffer.utils.AbstractViewModel
@@ -25,9 +25,20 @@ class MainViewModel(private val flightSearchRepository: FlightsSearchRepository)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe ({
-                    searchEvent.postValue(SearchEvent(isSuccess = true, isLoading = false))
+                    searchEvent.postValue(
+                        SearchEvent(
+                            isSuccess = true,
+                            isLoading = false
+                        )
+                    )
                 }, {
-                        err -> searchEvent.postValue(SearchEvent(error = err, isSuccess = false, isLoading = false))
+                        err -> searchEvent.postValue(
+                    SearchEvent(
+                        error = err,
+                        isSuccess = false,
+                        isLoading = false
+                    )
+                )
                 })
         }
     }
