@@ -136,7 +136,14 @@
                 android:textSize="32sp"
                 android:textColor="@color/black" />
         </LinearLayout>
-
     </RelativeLayout>
+        <Button
+            android:id="@+id/getOfferButton"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Get this offer!"
+            android:background="@drawable/green_button_box"
+            android:layout_margin="15dp"
+            />
     </LinearLayout>
 </ScrollView>

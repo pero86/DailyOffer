@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import com.kiwi.dailyoffer.R
 import com.kiwi.dailyoffer.view.offer.OfferFragment
 import com.kiwi.dailyoffer.view.offer.OfferFragmentPagerAdapter
@@ -55,6 +56,7 @@ class MainFragment : Fragment() {
 
                         Toast.makeText(context,"Data loaded successfully",Toast.LENGTH_LONG).show()
                     } else {
+                        noDataText.text = "Data loading failed! Try again later."
                         Toast.makeText(context,"Data loading failed!",Toast.LENGTH_LONG).show()
                     }
                 }

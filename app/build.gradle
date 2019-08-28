@@ -25,6 +25,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -88,6 +89,12 @@ dependencies {
 
     //cardview
     implementation "androidx.cardview:cardview:1.0.0"
+
+    //material design
+    implementation 'com.google.android.material:material:1.0.0'
+
+    //multidex
+    implementation 'com.android.support:multidex:1.0.3'
 
 
     testImplementation 'junit:junit:4.12'

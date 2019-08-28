@@ -23,6 +23,8 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import java.util.*
+import android.content.Intent
+import android.net.Uri
 
 
 class OfferFragment : Fragment() {
@@ -90,6 +92,11 @@ class OfferFragment : Fragment() {
                 showNoData()
             }
         })
+
+        getOfferButton.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.uiData.value?.flightInfo?.deepLink))
+            startActivity(browserIntent)
+        }
     }
 
     override fun onResume() {
