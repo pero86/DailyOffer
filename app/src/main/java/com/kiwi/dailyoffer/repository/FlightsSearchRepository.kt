@@ -39,10 +39,7 @@ class FlightsSearchRepositoryImpl(private val flightsDatasource: FlightsDatasour
                 routesCache.clear()
                 t?.data?.map { routesCache.add(it) }
         }
-        .doOnSuccess { Log.d("*******", "today: " + dateFrom + " formatted " + dateFrom.toString(dateFormat)
-                + " dateT " + dateTo + " formatted: " + Utils.toKiwiDateFormat(dateTo))
-
-                }
+        .doOnSuccess { Log.d("*******", "today: " + dateFrom + " formatted " + dateFrom.toString(dateFormat) + " dateT " + dateTo + " formatted: " + Utils.toKiwiDateFormat(dateTo)) }
         .ignoreElement()
 
     override fun getFlights(): Single<List<Data>> = Single.just(routesCache)

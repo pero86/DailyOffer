@@ -1,6 +1,9 @@
 package com.kiwi.dailyoffer.view.offer
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kiwi.dailyoffer.model.Data
@@ -49,7 +52,6 @@ class OfferViewModel(private val position: Int,private val flightSearchRepositor
 
         return position
     }
-
 
 }
 
