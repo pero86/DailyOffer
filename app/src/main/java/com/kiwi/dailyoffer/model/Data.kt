@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class Data(
     @SerializedName("aTime")
-    val aTime: Int,
+    val aTime: Long,
     @SerializedName("aTimeUTC")
-    val aTimeUTC: Int,
+    val aTimeUTC: Long,
     @SerializedName("baglimit")
     val baglimit: Baglimit,
     @SerializedName("bags_price")
@@ -25,9 +25,9 @@ data class Data(
     @SerializedName("countryTo")
     val countryTo: CountryTo,
     @SerializedName("dTime")
-    val dTime: Int,
+    val dTime: Long,
     @SerializedName("dTimeUTC")
-    val dTimeUTC: Int,
+    val dTimeUTC: Long,
     @SerializedName("deep_link")
     val deepLink: String,
     @SerializedName("distance")

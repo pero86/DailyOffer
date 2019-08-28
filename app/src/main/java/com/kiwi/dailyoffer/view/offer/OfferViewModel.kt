@@ -11,26 +11,29 @@ import io.reactivex.schedulers.Schedulers
 import khronos.Dates
 import java.util.*
 
-class OfferViewModel(private val flightSearchRepository: FlightsSearchRepository) : AbstractViewModel() {
+class OfferViewModel(private val position: Int,private val flightSearchRepository: FlightsSearchRepository) : AbstractViewModel() {
     val uiData = MutableLiveData<ResultUIModel>()
 
-    fun getFlightData(position: Int) {
-        uiData.value = ResultUIModel(flightSearchRepository.getFlightDataNew(getPositionInArray(position)))
-
-//        launch {
-//            flightSearchRepository.getFlightData(getPositionInArray(position))
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.io())
-//                .subscribe({ data ->
-//                    uiData.value = ResultUIModel(data)
-//                }, { err ->
-//                    //uiData.value = ResultUIModel(error = err)
-//                })
-//        }
+    fun getFlightData() {
+        launch {
+            flightSearchRepository.getFlights()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({ data ->
+                    uiData.value = ResultUIModel(getFlightData(getPositionInArray(position),data))
+                }, { err ->
+                    uiData.value = ResultUIModel(error = err)
+                })
+        }
     }
 
     fun printPosition() {
-        //Log.d("OfferViewModel","position: $position")
+        Log.d("OfferViewModel","position: $position")
+    }
+
+    fun getFlightData(positionInsideList: Int, routesCache : List<Data>): Data? {
+        if (routesCache.isEmpty() || routesCache.size < positionInsideList) return null
+        else return routesCache[positionInsideList]
     }
 
     private fun getPositionInArray(position: Int) : Int {
@@ -41,7 +44,7 @@ class OfferViewModel(private val flightSearchRepository: FlightsSearchRepository
             cal.time = Dates.today
             val datOfTheWeek = cal.get(Calendar.DAY_OF_WEEK)
 
-            return (position * 6) + (position-1) + datOfTheWeek
+            return (position * 7) + datOfTheWeek-1
         }
 
         return position
@@ -50,4 +53,4 @@ class OfferViewModel(private val flightSearchRepository: FlightsSearchRepository
 
 }
 
-data class ResultUIModel(val flightInfo: Data?, val error: Throwable? = null)
+data class ResultUIModel(val flightInfo: Data? = null, val error: Throwable? = null)

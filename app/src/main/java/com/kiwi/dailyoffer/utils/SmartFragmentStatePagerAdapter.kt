@@ -32,7 +32,7 @@ abstract class SmartFragmentStatePagerAdapter(fragmentManager: FragmentManager?)
     }
 
     // Returns the fragment for the position (if instantiated)
-    fun getRegisteredFragment(position: Int): Fragment {
+    fun getRegisteredFragment(position: Int): Fragment? {
         return registeredFragments.get(position)
     }
 }

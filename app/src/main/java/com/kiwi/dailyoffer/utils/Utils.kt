@@ -1,5 +1,6 @@
 package com.kiwi.dailyoffer.utils
 
+import android.graphics.Color
 import android.util.Log
 import java.text.SimpleDateFormat
 import java.util.*
@@ -25,6 +26,16 @@ class Utils {
             val df = SimpleDateFormat("dd/MM/YYYY", Locale.getDefault())
 
             return df.format(date)
+        }
+
+        fun getColorWithAlpha(color: Int, ratio: Float): Int {
+            var newColor = 0
+            val alpha = Math.round(Color.alpha(color) * ratio)
+            val r = Color.red(color)
+            val g = Color.green(color)
+            val b = Color.blue(color)
+            newColor = Color.argb(alpha, r, g, b)
+            return newColor
         }
     }
 }

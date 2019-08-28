@@ -47,6 +47,10 @@ class MainViewModel(private val flightSearchRepository: FlightsSearchRepository)
         }
     }
 
+    fun areFlightsNullOrEmpty() : Boolean {
+        return flightSearchRepository.getNumberOfTotalFlights() == 0
+    }
+
 
 }
 
